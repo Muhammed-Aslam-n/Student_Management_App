@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:todofromnet/database.dart';
-import 'databasehandler.dart';
+import 'package:todofromnet/db/database.dart';
+import '../../db/databasehandler.dart';
 import 'fulldetails.dart';
-import 'home.dart';
+import '../home.dart';
 
 class ShortDetails extends StatefulWidget {
   const ShortDetails({Key? key}) : super(key: key);
@@ -61,7 +61,7 @@ class _ShortDetailsState extends State<ShortDetails> {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
+                children: const [
                   DrawerHeader(
                     decoration: BoxDecoration(
                       color: Colors.blue,
@@ -72,20 +72,20 @@ class _ShortDetailsState extends State<ShortDetails> {
                     child: Text(''),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(16.0),
                     child: Text("Muhammed Aslam n",style: TextStyle(fontSize: 22),),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text("Ass.Prof Computer Science",style: TextStyle(fontSize: 14),),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              Text("Utilities",textAlign: TextAlign.center,style: TextStyle(fontSize: 15,color: Colors.blueAccent,letterSpacing: 2),),
-              Divider(
+              const Text("Utilities",textAlign: TextAlign.center,style: TextStyle(fontSize: 15,color: Colors.blueAccent,letterSpacing: 2),),
+              const Divider(
                 color: Colors.blueAccent,thickness: 1.3,
               ),
               ListTile(
@@ -139,7 +139,7 @@ class _ShortDetailsState extends State<ShortDetails> {
             builder:
                 (BuildContext context, AsyncSnapshot<List<Grocery>> snapshot) {
               if (!snapshot.hasData) {
-                return Center(child: const Text('Loading...'));
+                return const Center(child: Text('Loading...'));
               }
               return snapshot.data!.isEmpty
                   ? const Center(child: Text('No Students Added yet.'))
@@ -156,34 +156,28 @@ class _ShortDetailsState extends State<ShortDetails> {
                                 child: ListTile(
                                   subtitle: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Text("Roll Num : ${grocery.rollnum}",style: TextStyle(fontSize: 13,color: Colors.blueAccent)),
+                                    child: Text("Roll Num : ${grocery.rollnum}",style: const TextStyle(fontSize: 13,color: Colors.blueAccent)),
                                   ),
                                   title: Padding(
                                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                     child: Padding(
                                       padding: const EdgeInsets.only(top: 8.0),
-                                      child: Text("${grocery.name}",style: TextStyle(fontSize: 20,color: Colors.redAccent)),
+                                      child: Text(grocery.name,style: const TextStyle(fontSize: 20,color: Colors.redAccent)),
                                     ),
                                   ),
                                   onTap: () {
                                     setState(() {
                                       DatabaseHelper.instance.idd = ((grocery.id)!);
-                                      print(
-                                          "Shortlist idd is ${DatabaseHelper.instance.idd}\tGroceryId is ${grocery.id}");
-                                      Navigator.push(
+                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  FullDetails()));
+                                                  const FullDetails()));
                                     });
                                   },
                                   onLongPress: () {
                                     setState(
                                       () {
-                                        // DatabaseHelper.instance
-                                        //     .remove(grocery.id!);
-                                        // DatabaseHelper.instance.idd++;
-
                                         showDialog<String>(
                                           context: context,
                                           barrierDismissible: false,
@@ -208,8 +202,6 @@ class _ShortDetailsState extends State<ShortDetails> {
                                             ],
                                           ),
                                         );
-
-
                                       },
                                     );
                                   },
@@ -224,7 +216,7 @@ class _ShortDetailsState extends State<ShortDetails> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
           onPressed: () async {
             Navigator.pushNamed(context, '/editDetails');
           },

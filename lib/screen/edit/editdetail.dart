@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:todofromnet/shortdetails.dart';
-import 'databasehandler.dart';
+import 'package:todofromnet/screen/details/shortdetails.dart';
 import 'package:wc_form_validators/wc_form_validators.dart';
-import 'database.dart';
+import '../../db/database.dart';
+import '../../db/databasehandler.dart';
 
 class EditDetails extends StatefulWidget {
   const EditDetails({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class EditDetails extends StatefulWidget {
 
 class _EditDetailsState extends State<EditDetails> {
   int? selectedId;
-  var editID=null;
+  var editID;
 
   var eId,
       ename = "Name",
@@ -27,7 +27,7 @@ class _EditDetailsState extends State<EditDetails> {
   void initState() {
     editID = DatabaseHelper.instance.edtid;
     checkId();
-    debugPrint("Passed Id in EditDetails InitState is  ${editID}");
+    super.initState();
   }
 
   void checkId() async {

@@ -40,11 +40,15 @@ dependencies:
   carousel_slider: ^4.0.0
   wc_form_validators: ^1.0.0
   double_back_to_close_app: ^2.0.1
+  hive:
+  hive_flutter:
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  hive_generator:
+  build_runner:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

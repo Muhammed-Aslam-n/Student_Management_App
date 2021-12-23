@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'database.dart';
-import 'databasehandler.dart';
+import '../../db/database.dart';
+import '../../db/databasehandler.dart';
+
 
 class FullDetails extends StatefulWidget {
   const FullDetails({Key? key}) : super(key: key);
@@ -17,7 +18,6 @@ class _FullDetailsState extends State<FullDetails> {
   void initState() {
     passedId = DatabaseHelper.instance.idd;
     refreshContact(passedId);
-    print("Passed Id (tapping id)  in fullDetails is  $passedId");
     super.initState();
   }
 
@@ -45,30 +45,6 @@ class _FullDetailsState extends State<FullDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Color.fromARGB(255,250,203,158),
-      // appBar: AppBar(
-      //   leading: Image.asset('images/AppbarICon.png'),
-      //   backgroundColor: Colors.blueAccent,
-      //   title: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.end,
-      //     children: [
-      //       Text(
-      //         'DreamSchool',
-      //         style: TextStyle(
-      //             fontFamily: 'DancingScript',
-      //             fontWeight: FontWeight.w600,
-      //             fontSize: 26),
-      //       ),
-      //       Text(
-      //         'Where Wishes Comes True',
-      //         style: TextStyle(
-      //           fontWeight: FontWeight.w600,
-      //           fontSize: 8,
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
       body: Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -94,7 +70,7 @@ class _FullDetailsState extends State<FullDetails> {
                 ListTile(
                   leading: const Icon(Icons.person),
                   title: Text(
-                    ' ${name}',
+                    ' $name',
                   ),
                 ),
                 const SizedBox(
@@ -103,41 +79,38 @@ class _FullDetailsState extends State<FullDetails> {
                 ListTile(
                   leading: const Icon(Icons.accessibility),
                   title: Text(
-                    ' ${age}',
+                    ' $age',
                   ),
                 ),
                 const SizedBox(
                   height: 30,
                 ),
                 ListTile(
-                  leading: Icon(Icons.margin),
+                  leading: const Icon(Icons.margin),
                   title: Text(
-                    ' ${rollnum}',
+                    ' $rollnum',
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 ListTile(
-                  leading: Icon(Icons.phone),
+                  leading: const Icon(Icons.phone),
                   title: Text(
-                    ' ${mobile}',
+                    ' $mobile',
                   ),
                 ),
-                SizedBox(
-                  height: 30,
-                ),
-                SizedBox(
-                  height: 30,
+                const SizedBox(
+                  height: 60,
                 ),
                 // Text(''),
-                FlatButton(
+                TextButton(
                   onPressed: () {
                     DatabaseHelper.instance.edtid = id;
                     Navigator.pushNamed(context, '/editDetails');
                     debugPrint("Id that passes from FulDetails to Edit is : $passedId");
                   },
-                  child: Icon(Icons.edit),
+                  child: const Icon(Icons.edit),
                 ),
               ],
             ),

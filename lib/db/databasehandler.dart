@@ -5,8 +5,8 @@ import 'package:path_provider/path_provider.dart';
 import 'database.dart';
 
 class DatabaseHelper {
-  static final dbname = 'studentsample.db';
-  static final tableName = 'studentsample';
+  static const dbname = 'studentsample.db';
+  static const tableName = 'studentsample';
   DatabaseHelper._privateConstructor();
 
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
@@ -64,7 +64,7 @@ class DatabaseHelper {
 
   Future<List<Grocery>> searchStudents(String keyword) async{
     Database db = await instance.database;
-    List<Map<String,dynamic>> students = await db.query('$tableName',where:  'name LIKE ?',whereArgs: ['$keyword%']);
+    List<Map<String,dynamic>> students = await db.query(tableName,where:  'name LIKE ?',whereArgs: ['$keyword%']);
     List<Grocery> grocery = students.map((students) => Grocery.fromMap(students)).toList();
     return grocery;
   }

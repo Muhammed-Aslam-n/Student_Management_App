@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:todofromnet/database.dart';
-import 'editdetail.dart';
+import 'package:todofromnet/db/database.dart';
 import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 
 class Home extends StatefulWidget {
   late List<Grocery> notes;
+
+  Home({Key? key}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -18,20 +19,20 @@ contentBox({heading, desc, color}) {
       borderRadius: BorderRadius.circular(8),
       color: color,
     ),
-    margin: EdgeInsets.all(20),
+    margin: const EdgeInsets.all(20),
     child: Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Text(
           heading,
         ),
         Container(
-          margin: EdgeInsets.fromLTRB(15, 25, 10, 15),
+          margin: const EdgeInsets.fromLTRB(15, 25, 10, 15),
           child: Text(
             desc,
-            style: TextStyle(
+            style: const TextStyle(
                 letterSpacing: 2,
                 wordSpacing: 1.2,
                 color: Color.fromARGB(170, 196, 44, 59)),
@@ -53,25 +54,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    buttonBox({buttonText, routName}) {
-      return Expanded(
-        child: ElevatedButton(
-          onPressed: () async {
-            await Navigator.pushNamed(
-              context,
-              routName,
-            );
-          },
-          style: ElevatedButton.styleFrom(fixedSize: Size(175, 50)),
-          child: Text(
-            buttonText,
-            style: TextStyle(
-                fontSize: 12, fontWeight: FontWeight.w600, color: Colors.white),
-          ),
-        ),
-      );
-    }
-
     return Scaffold(
       appBar: AppBar(
         leading: Image.asset('images/AppbarICon.png'),
@@ -102,7 +84,7 @@ class _HomeState extends State<Home> {
           children: [
              Column(
                crossAxisAlignment: CrossAxisAlignment.stretch,
-               children: [
+               children: const [
                  DrawerHeader(
                    decoration: BoxDecoration(
                      color: Colors.blue,
@@ -113,20 +95,20 @@ class _HomeState extends State<Home> {
                    child: Text(''),
                  ),
                  Padding(
-                   padding: const EdgeInsets.all(16.0),
+                   padding: EdgeInsets.all(16.0),
                    child: Text("Muhammed Aslam n",style: TextStyle(fontSize: 22),),
                  ),
                  Padding(
-                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                   padding: EdgeInsets.symmetric(horizontal: 16.0),
                    child: Text("Ass.Prof Computer Science",style: TextStyle(fontSize: 14),),
                  )
                ],
              ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Text("Utilities",textAlign: TextAlign.center,style: TextStyle(fontSize: 15,color: Colors.blueAccent,letterSpacing: 2),),
-            Divider(
+            const Text("Utilities",textAlign: TextAlign.center,style: TextStyle(fontSize: 15,color: Colors.blueAccent,letterSpacing: 2),),
+            const Divider(
               color: Colors.blueAccent,thickness: 1.3,
             ),
             ListTile(
@@ -181,7 +163,7 @@ class _HomeState extends State<Home> {
           child: ListView(
             children: [
               Container(
-                margin: EdgeInsets.all(25.0),
+                margin: const EdgeInsets.all(25.0),
                 child: CarouselSlider(
                   options: CarouselOptions(
                     enlargeCenterPage: true,
@@ -206,7 +188,7 @@ class _HomeState extends State<Home> {
                       .toList(),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               contentBox(
@@ -225,8 +207,8 @@ class _HomeState extends State<Home> {
                 desc: descriptionText,
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(20, 0, 20, 35),
-                padding: EdgeInsets.all(15),
+                margin: const EdgeInsets.fromLTRB(20, 0, 20, 35),
+                padding: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: Colors.white,

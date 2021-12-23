@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todofromnet/databasehandler.dart';
-import 'databasehandler.dart';
-import 'database.dart';
-import 'fulldetails.dart';
+import '../../db/database.dart';
+import '../../db/databasehandler.dart';
+import '../details/fulldetails.dart';
 
 class SearchStudent extends StatefulWidget {
   const SearchStudent({Key? key}) : super(key: key);
